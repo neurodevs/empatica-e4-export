@@ -8,10 +8,9 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from ChromeWithPrefs import ChromeWithPrefs
 
-def main(email, password, download_dir, driver_path, should_quit_at_end):
+def main(email, password, download_dir, driver_path, should_quit_at_end, sleep_sec):
     print('Starting the script...')
 
-    sleep_time_sec = 1
     should_quit_at_end = False
     download_dir = os.path.expanduser(download_dir)
 
@@ -48,19 +47,19 @@ def main(email, password, download_dir, driver_path, should_quit_at_end):
     print('Logged in successfully...')
 
     # Step 4: Click the Sessions button
-    time.sleep(sleep_time_sec)
+    time.sleep(sleep_sec)
     sessions_link = driver.find_element(By.LINK_TEXT, 'Sessions')
     sessions_link.click()
     print('Navigated to Sessions...')
 
     # Step 5: Click the View All Sessions button
-    time.sleep(sleep_time_sec)
+    time.sleep(sleep_sec)
     view_all_sessions_button = driver.find_element(By.XPATH, '//button[contains(text(), "View All Sessions")]')
     view_all_sessions_button.click()
     print('Clicked View All Sessions...')
 
     # Step 6: Click each Download button
-    time.sleep(sleep_time_sec)
+    time.sleep(sleep_sec)
     html_content = driver.page_source
     soup = BeautifulSoup(html_content, 'html.parser')
 
@@ -99,4 +98,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    main(args.email, args.password, args.download_dir, args.driver_path, args.should_quit_at_end)
+    main(args.email, args.password, args.download_dir, args.driver_path, args.should_quit_at_end, args.sleep_sec)
