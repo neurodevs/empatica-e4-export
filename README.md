@@ -49,14 +49,6 @@ conda activate empatica-e4-export
 
 ## Usage
 
-### Start Chrome in Debugging Mode
-
-Start Chrome in debugging mode before running the script:
-
-```bash
-open -a "Google Chrome" --args --remote-debugging-port=9222 --user-data-dir="/tmp/chrome_dev"
-```
-
 ### Run the Script
 
 Run the script from the command line with the required arguments:
